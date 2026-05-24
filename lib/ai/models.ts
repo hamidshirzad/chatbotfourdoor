@@ -9,17 +9,17 @@ export interface Model {
 
 export const models: Array<Model> = [
   {
-    id: 'gpt-4o-mini',
-    label: 'GPT 4o mini',
-    apiIdentifier: 'gpt-4o-mini',
-    description: 'Small model for fast, lightweight tasks',
+    id: 'claude-haiku-4-5',
+    label: 'Claude Haiku 4.5',
+    apiIdentifier: 'claude-haiku-4-5-20251001',
+    description: 'Fast, lightweight model for quick tasks',
   },
   {
-    id: 'gpt-4o',
-    label: 'GPT 4o',
-    apiIdentifier: 'gpt-4o',
+    id: 'claude-sonnet-4-6',
+    label: 'Claude Sonnet 4.6',
+    apiIdentifier: 'claude-sonnet-4-6',
     description: 'For complex, multi-step tasks',
   },
 ] as const;
 
-export const DEFAULT_MODEL_NAME: string = 'gpt-4o-mini';
+export const DEFAULT_MODEL_NAME: string = 'claude-haiku-4-5';

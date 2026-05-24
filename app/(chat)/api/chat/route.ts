@@ -10,7 +10,7 @@ import { z } from 'zod';
 import { auth } from '@/app/(auth)/auth';
 import { customModel } from '@/lib/ai';
 import { models } from '@/lib/ai/models';
-import { systemPrompt } from '@/lib/ai/prompts';
+import { getSystemPromptText } from '@/lib/ai/prompts';
 import {
   deleteChatById,
   getChatById,
@@ -91,7 +91,7 @@ export async function POST(request: Request) {
 
   const result = streamText({
     model: customModel(model.apiIdentifier),
-    system: systemPrompt,
+    system: await getSystemPromptText(),
     messages: coreMessages,
     maxSteps: 5,
     experimental_activeTools: allTools,
@@ -203,14 +203,6 @@ export async function POST(request: Request) {
             model: customModel(model.apiIdentifier),
             system:
               'You are a helpful writing assistant. Based on the description, please update the piece of writing.',
-            experimental_providerMetadata: {
-              openai: {
-                prediction: {
-                  type: 'content',
-                  content: currentContent,
-                },
-              },
-            },
             messages: [
               {
                 role: 'user',
